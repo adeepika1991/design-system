@@ -1,10 +1,7 @@
-import type { Metadata } from "next";
+"use client";
 import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "Design System",
-  description: "Project - Design System",
-};
+import Header from "@/components/Header";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 export default function RootLayout({
   children,
@@ -12,8 +9,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body>{children}</body>
+    <html lang="en">
+      <body>
+        <ThemeProvider>
+          <Header />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
